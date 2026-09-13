@@ -1,4 +1,4 @@
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_URL = String(import.meta.env.VITE_SUPABASE_URL ?? '').trim().replace(/^['"]|['"]$/g, '');
 const API_BASE = `${SUPABASE_URL}/functions/v1/api`;
 
 function getAuthHeaders(userId: string): HeadersInit {

@@ -1,6 +1,6 @@
 import { User } from './supabase';
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_URL = String(import.meta.env.VITE_SUPABASE_URL ?? '').trim().replace(/^['"]|['"]$/g, '');
 
 export async function loginUser(username: string, password: string): Promise<{ user: User | null; error: string | null }> {
   try {

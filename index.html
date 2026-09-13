@@ -8,9 +8,58 @@
     <meta property="og:image" content="https://bolt.new/static/og_default.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
-</head>
+    <style>
+      #initial-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8fafc;
+        z-index: 9999;
+      }
+      #initial-loader .spinner {
+        width: 64px;
+        height: 64px;
+        border: 4px solid #2563eb;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 16px;
+      }
+      #initial-loader p {
+        color: #475569;
+        font-family: system-ui, sans-serif;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+  </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="initial-loader">
+        <div style="text-align: center">
+          <div class="spinner"></div>
+          <p>Loading…</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.addEventListener('error', function (e) {
+        var loader = document.getElementById('initial-loader');
+        if (loader) {
+          loader.innerHTML =
+            '<div style="text-align:center;max-width:420px;padding:24px">' +
+            '<h2 style="color:#1e293b;margin-bottom:8px">Something went wrong</h2>' +
+            '<p style="color:#64748b;margin-bottom:16px">' +
+            'The page could not load. Make sure GitHub Secrets ' +
+            '<code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> ' +
+            'are set, then re-run the workflow.' +
+            '</p>' +
+            '<button onclick="location.reload()" style="padding:8px 16px;background:#2563eb;color:#fff;border:none;border-radius:8px;cursor:pointer">' +
+            'Try Again</button></div>';
+        }
+      });
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
