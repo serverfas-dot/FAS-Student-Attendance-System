@@ -1,0 +1,8 @@
+[functions.api]
+verify_jwt = false
+
+[functions.auth]
+verify_jwt = false
+
+[functions.hash-password]
+verify_jwt = false
