@@ -49,7 +49,7 @@ export default function Login() {
           <div className="text-center mb-8">
             <div className="flex justify-center mb-6">
               <img
-                src={`${import.meta.env.BASE_URL}png copy.png`}
+                src={`${import.meta.env.BASE_URL}png copy 2.png`}
                 alt="FAAFU ATOLL SCHOOL Logo"
                 className="w-24 h-24 object-contain"
                 onError={(e) => {
